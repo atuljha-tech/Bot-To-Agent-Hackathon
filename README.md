@@ -283,3 +283,142 @@ you2/
 ├── client/       # Next.js Frontend
 ├── server/       # Node.js + Express Backend
 └── extension/    # Chrome Extension (Manifest V3)
+```
+# 🛠️ Tech Stack
+
+| Layer | Stack |
+|------|------|
+| Frontend | Next.js, React, TypeScript |
+| Styling | Tailwind CSS, Framer Motion |
+| Backend | Node.js, Express |
+| Database | MongoDB |
+| AI Engine | Google Gemini API |
+| Browser Agent | Chrome Extension Manifest V3 |
+| Charts | Recharts |
+
+---
+
+# 🎨 Frontend Experience
+
+Designed to feel like:
+
+> **Your consciousness became software.**
+
+## UI Style
+
+- dark cinematic theme  
+- glassmorphism panels  
+- premium typography  
+- neural glowing effects  
+- animated orb twin avatar  
+- futuristic dashboard  
+- startup-grade polish  
+
+---
+
+# ⚙️ How It Works
+
+## Step 1 — Create Your Twin
+
+User answers onboarding questions:
+
+- goals  
+- strengths  
+- habits  
+- distractions  
+- priorities  
+- personality style  
+
+## Step 2 — Twin Learns
+
+Gemini creates a dynamic behavioral profile.
+
+## Step 3 — Agent Activates
+
+You² starts:
+
+- planning  
+- tracking  
+- warning  
+- redirecting  
+- executing  
+- optimizing  
+
+---
+
+# 🎬 Judge Demo Flow
+
+1. Open app  
+2. Create digital twin  
+3. Add 10 tasks  
+4. AI prioritizes missions  
+5. Click START  
+6. Task launches automatically  
+7. Open YouTube distraction tab  
+8. Warning popup appears  
+9. Ignore warning  
+10. Tab auto-closes  
+11. Dashboard shows analytics  
+
+---
+
+# 📁 Important Pages
+
+```bash
+client/app/
+├── page.tsx              # Landing page
+├── dashboard/page.tsx    # Main dashboard
+├── chat/page.tsx         # AI Twin Chat
+├── planner/page.tsx      # Adaptive planner
+├── analytics/page.tsx    # Productivity insights
+├── tasks/page.tsx        # Mission center
+```
+# 🧠 Why This Matters
+
+Most AI tools answer.  
+
+**You² acts.**
+
+Most tools react.  
+
+**You² anticipates.**
+
+Most tools are generic.  
+
+**You² is personalized intelligence.**
+
+---
+
+# 🚀 Future Roadmap
+
+- AI twin negotiates meetings automatically  
+- Twin manages email workflows  
+- Twin predicts burnout early  
+- Twin builds custom study schedules  
+- Twin becomes cross-device memory system  
+- Twin becomes full personal operating system  
+
+---
+
+# 🏆 Built For
+
+**MLH Bot-to-Agent Hackathon 2026**
+
+---
+
+# 🤝 Contributing
+
+Ideas, feedback, and collaborations are welcome.
+
+---
+
+# 📄 License
+
+MIT License
+
+---
+
+# ✨ Final Statement
+
+> You² is not another chatbot.  
+> It is the beginning of personal autonomous intelligence.
