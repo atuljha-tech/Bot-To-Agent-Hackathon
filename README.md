@@ -224,6 +224,7 @@ you2/
 ├── client/       # Next.js Frontend
 ├── server/       # Node.js + Express Backend
 └── extension/    # Chrome Extension (Manifest V3)
+```
 🛠 Tech Stack
 Layer	Stack
 Frontend	Next.js, React, TypeScript
@@ -233,99 +234,5 @@ Database	MongoDB
 AI Engine	Google Gemini API
 Browser Agent	Chrome Extension MV3
 Analytics	Recharts
-🎨 Frontend Experience
 
-Designed to feel like:
-
-Your consciousness became software.
-
-UI Style
-dark cinematic theme
-glassmorphism panels
-neural glowing visuals
-futuristic mission control dashboard
-animated orb twin avatar
-premium typography
-startup-grade polish
-⚡ How It Works
-Step 1 — Create Your Twin
-
-Answer onboarding questions:
-
-goals
-strengths
-habits
-distractions
-priorities
-personality
-Step 2 — Twin Learns
-
-Gemini builds a dynamic personal profile.
-
-Step 3 — Agent Activates
-
-You² starts:
-
-planning
-tracking
-warning
-redirecting
-executing
-optimizing
-🎬 Demo Flow
-Judge Demo
-Open app
-Create Twin
-Add 10 tasks
-AI prioritizes missions
-Click START
-Task launches automatically
-Open YouTube distraction tab
-Warning appears
-Ignore warning
-Tab auto-closes
-Dashboard shows analytics
-📁 Important Pages
-client/app/
-├── page.tsx              # Landing page
-├── dashboard/page.tsx    # Main dashboard
-├── chat/page.tsx         # Twin chat
-├── planner/page.tsx      # Dynamic planner
-├── analytics/page.tsx    # Productivity insights
-├── tasks/page.tsx        # Mission center
-🧠 Why This Matters
-
-Most AI tools answer.
-
-You² acts.
-
-Most tools react.
-
-You² anticipates.
-
-Most tools are generic.
-
-You² is personalized intelligence.
-
-🚀 Future Roadmap
-AI twin negotiates meetings automatically
-Twin manages inbox workflow
-Twin predicts burnout early
-Twin schedules deep work sessions
-Twin becomes life operating system
-🏆 Built For
-
-MLH Bot-to-Agent Hackathon 2026
-
-🤝 Contributing
-
-Open to ideas, improvements, and collaborations.
-
-📄 License
-
-MIT License
-
-✨ Final Statement
-
-You² is not another chatbot.
 It is the beginning of personal autonomous intelligence.
