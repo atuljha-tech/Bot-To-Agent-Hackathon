@@ -2,35 +2,40 @@
 
 > **Stop guessing. Start operating with your second self.**
 
-You² is an **AI-powered Autonomous Digital Twin Agent** that learns how you think, work, prioritize, procrastinate, and make decisions — then actively helps you execute your goals in real time.
+You² is an **AI-powered Autonomous Digital Twin Agent** that learns how you think, work, focus, prioritize, procrastinate, and make decisions — then actively helps you execute goals in real time.
 
 Built for the **MLH Bot-to-Agent Hackathon**.
 
 ---
 
-# 🌍 Vision
+# 🌍 The Vision
 
-Most AI products today are passive.
+Most AI tools today are passive.
 
-They answer questions.  
-They generate text.  
-They wait for commands.
+They:
 
-**You² is different.**
+- answer prompts  
+- generate content  
+- wait for commands  
+- forget context  
+- do not take initiative  
 
-It represents the next generation of AI:
+**You² changes that.**
 
-### From Bot ➜ Agent
+You² represents the shift from:
 
-An AI that:
+## Bot ➜ Agent
 
-- understands your behavior  
-- predicts your patterns  
-- protects your focus  
-- launches your tasks  
-- replans your day  
-- improves your discipline  
-- becomes your intelligent second self  
+An AI system that can:
+
+- understand your behavior  
+- remember your goals  
+- detect distractions  
+- launch tasks automatically  
+- replan your schedule  
+- coach discipline  
+- optimize productivity  
+- become your intelligent second self  
 
 ---
 
@@ -38,19 +43,20 @@ An AI that:
 
 You² creates a **Digital Twin** of the user.
 
-It learns:
+A Digital Twin is a personalized AI identity model trained on:
 
-- your goals  
-- work style  
-- productivity rhythm  
+- goals  
+- habits  
+- workflow style  
+- focus rhythm  
 - distractions  
 - communication tone  
-- strengths  
-- weak points  
 - priorities  
-- habits over time  
+- strengths  
+- weaknesses  
+- productivity patterns over time  
 
-Then it acts like an intelligent operator for your life.
+Instead of generic advice, You² gives **personalized intelligence**.
 
 ---
 
@@ -58,104 +64,147 @@ Then it acts like an intelligent operator for your life.
 
 ---
 
-## 1. Digital Twin Engine
+# 1️⃣ Digital Twin Engine
 
-Creates a personalized AI model of the user.
+The heart of You².
 
-It understands:
+Creates a behavioral model of the user and continuously improves it.
+
+## Learns:
 
 - how you think  
-- when you work best  
-- what derails you  
+- when you perform best  
+- what triggers procrastination  
 - how you make decisions  
-- what goals matter most  
+- how long tasks realistically take  
+- what motivates you  
+- where time gets wasted  
 
-This allows every suggestion to feel deeply personal.
+## Result:
+
+Every recommendation becomes context-aware and personal.
 
 ---
 
-## 2. AI Twin Chat
+# 2️⃣ AI Twin Chat
 
-Talk to your twin naturally.
+Talk to your second self.
 
-### Example Prompts
+Ask real questions and receive strategic responses based on your behavior.
+
+## Example Prompts
 
 - What should I focus on today?
-- Why am I procrastinating?
-- Should I do DSA or projects?
-- Reorder my tasks by ROI.
-- Motivate me honestly.
-- How can I become disciplined?
+- Why am I procrastinating lately?
+- Should I do DSA or build projects?
+- Reorder my tasks by importance.
+- Give me honest motivation.
+- Help me stop wasting time.
+- What would the best version of me do now?
 
-The responses are based on **your actual behavior**, not generic advice.
+## Why It’s Different
+
+Most AI chats give generic answers.
+
+You² uses:
+
+- your goals  
+- your habits  
+- your performance data  
+- your current schedule  
 
 ---
 
-## 3. Smart Focus Agent
+# 3️⃣ Smart Focus Agent
 
-A proactive AI that fights distraction automatically.
+A proactive AI that protects your attention.
 
-### Example Flow
+## Example Flow
 
-| Time on Distracting Site | Agent Action |
-|--------------------------|-------------|
-| 15 mins | Gentle reminder |
-| 30 mins | Strong warning |
-| 45 mins | Countdown popup |
-| 60 mins | Auto-close tab / redirect |
+| Time on Distracting Website | AI Action |
+|----------------------------|----------|
+| 15 minutes | Gentle reminder |
+| 30 minutes | Strong warning |
+| 45 minutes | Countdown popup |
+| 60 minutes | Auto-close tab / redirect |
 
-### Example Message
+## Example Messages
 
 > “You planned to focus today. Return to your mission?”
 
+> “Pattern detected: 3 distractions today.”
+
+## Supported Actions
+
+- close distracting tabs  
+- mute entertainment tabs  
+- redirect to LeetCode  
+- open planner dashboard  
+- start focus timer  
+
 ---
 
-## 4. Task Execution Agent
+# 4️⃣ Task Execution Agent
 
-You² does not just remind you. It helps you complete tasks.
+You² does not just remind you.
 
-### Example User Tasks
+It helps you complete tasks.
+
+## Example User Tasks
 
 - Watch DSA Arrays playlist  
-- Read Striver notes  
 - Solve 3 LeetCode questions  
+- Read Striver notes  
 - Give mock interview  
 - Apply to internships  
-- Update LinkedIn  
+- Update LinkedIn profile  
 - Revise DBMS  
+- Build portfolio site  
 
-### What You² Does
+## What You² Does
 
 ✅ Prioritizes tasks  
 ✅ Converts tasks into missions  
-✅ Opens the right platform automatically  
+✅ Opens correct resources automatically  
 ✅ Starts timers  
-✅ Launches next mission  
+✅ Launches next task after completion  
+✅ Tracks progress  
 ✅ Replans if delayed  
 
 ---
 
-## 5. Adaptive Planner
+# 5️⃣ Adaptive Planner
 
-If you waste time or skip work:
+If life changes, the plan changes.
+
+## Example
 
 > “You skipped 2 tasks. Re-optimizing your remaining day.”
 
-The system rebuilds your schedule dynamically.
+The planner dynamically rebuilds your schedule based on:
+
+- time remaining  
+- missed tasks  
+- energy level  
+- deadlines  
+- productivity trends  
 
 ---
 
-## 6. Productivity Analytics
+# 6️⃣ Productivity Analytics
 
-Track:
+You² helps users understand themselves.
+
+## Dashboard Metrics
 
 - Focus Score  
 - Productive Hours  
 - Distraction Time  
 - Rescue Sessions  
-- Streaks  
-- Tasks Completed  
+- Task Completion Rate  
+- Deep Work Sessions  
 - Weekly Growth Trend  
+- Best Working Hours  
 
 ---
 
@@ -163,40 +212,46 @@ Track:
 
 A real-time execution layer inside the browser.
 
+The extension transforms You² from a web app into an active AI agent.
+
+---
+
 ## Features
 
-### Smart Site Classification
+### 🔍 Smart Site Classification
 
-Detects:
+Automatically detects:
 
 - productive sites  
 - distracting sites  
 - neutral sites  
 - sensitive/private sites  
 
-### Focus Nudges
+### 🎯 Focus Nudges
 
 Warns when attention drifts.
 
-### Instant Task Launching
+### ⚡ Instant Task Launching
 
-Click a mission:
+Click a mission card:
 
 - opens LeetCode  
 - opens HackerRank  
 - opens YouTube playlist  
 - opens LinkedIn Jobs  
-- opens Notes  
+- opens Notes / Docs  
 
-### Safe Mode
+### 🛡️ Safe Mode
 
-Sensitive categories are ignored automatically.
+Sensitive sites are ignored automatically.
 
 ---
 
 # 🔐 Privacy First
 
-You² is built with user trust in mind.
+Trust matters.
+
+You² is built with privacy controls.
 
 ## Automatically Ignored
 
@@ -211,9 +266,13 @@ You² is built with user trust in mind.
 
 - passwords  
 - OTPs  
-- card data  
+- card numbers  
 - secure form values  
 - keystrokes  
+
+## Philosophy
+
+> Assist productivity, never invade privacy.
 
 ---
 
@@ -224,15 +283,3 @@ you2/
 ├── client/       # Next.js Frontend
 ├── server/       # Node.js + Express Backend
 └── extension/    # Chrome Extension (Manifest V3)
-```
-🛠 Tech Stack
-Layer	Stack
-Frontend	Next.js, React, TypeScript
-Styling	Tailwind CSS, Framer Motion
-Backend	Node.js, Express
-Database	MongoDB
-AI Engine	Google Gemini API
-Browser Agent	Chrome Extension MV3
-Analytics	Recharts
-
-It is the beginning of personal autonomous intelligence.
