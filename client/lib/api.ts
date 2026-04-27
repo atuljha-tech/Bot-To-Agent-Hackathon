@@ -67,9 +67,16 @@ export interface Task {
   title: string;
   description: string;
   priority: 'high' | 'medium' | 'low';
+  category: 'dsa' | 'development' | 'learning' | 'career' | 'revision' | 'other';
   timeEstimate: string;
+  estimatedMinutes: number;
+  launchUrl: string;
   completed: boolean;
   completedAt?: string;
+  startedAt?: string;
+  status: 'pending' | 'active' | 'completed' | 'skipped';
+  order: number;
+  progressPercent: number;
   createdAt: string;
 }
 
@@ -173,12 +180,20 @@ export const simulationAPI = {
 export const taskAPI = {
   generate: (userId: string, request: string) =>
     api.post('/generate-tasks', { userId, request }).then(r => r.data),
+  addBulk: (userId: string, tasks: string[]) =>
+    api.post('/tasks/bulk', { userId, tasks }).then(r => r.data),
   getAll: (userId: string) =>
     api.get(`/tasks/${userId}`).then(r => r.data),
-  update: (taskId: string, completed: boolean) =>
-    api.put(`/tasks/${taskId}`, { completed }).then(r => r.data),
+  getActive: (userId: string) =>
+    api.get(`/tasks/active/${userId}`).then(r => r.data),
+  update: (taskId: string, updates: Partial<Task>) =>
+    api.put(`/tasks/${taskId}`, updates).then(r => r.data),
   delete: (taskId: string) =>
     api.delete(`/tasks/${taskId}`).then(r => r.data),
+  reorder: (userId: string, orderedIds: string[]) =>
+    api.put('/tasks/reorder', { userId, orderedIds }).then(r => r.data),
+  replan: (userId: string) =>
+    api.post(`/tasks/replan/${userId}`).then(r => r.data),
 };
 
 export const activityAPI = {

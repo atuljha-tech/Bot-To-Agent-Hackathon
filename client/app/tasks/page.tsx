@@ -56,7 +56,7 @@ export default function TasksPage() {
   };
 
   const toggleTask = async (taskId: string, completed: boolean) => {
-    try { await taskAPI.update(taskId, !completed); setTasks(prev => prev.map(t => t._id === taskId ? { ...t, completed: !completed } : t)); }
+    try { await taskAPI.update(taskId, { completed: !completed }); setTasks(prev => prev.map(t => t._id === taskId ? { ...t, completed: !completed } : t)); }
     catch {}
   };
 

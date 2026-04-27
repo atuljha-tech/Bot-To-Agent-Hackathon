@@ -292,3 +292,73 @@ STRICT INSTRUCTION: Return ONLY raw valid JSON:
   "weeklyGrowth": 3
 }`;
 };
+
+// ─── Mission Prioritization Prompt ───────────────────────────────────────────
+
+export const buildMissionPrompt = (
+  user: IUser,
+  taskTitles: string[]
+): string => {
+  return `You are the Digital Twin of ${user.name}. Prioritize and enrich these tasks into missions.
+
+=== USER PROFILE ===
+Goals: ${user.goals.join(', ')}
+Work Style: ${user.preferences?.workStyle || 'Not specified'}
+Productivity Peaks: ${user.preferences?.productivityPeaks?.join(', ') || 'Not specified'}
+Productivity Score: ${user.productivityScore}/100
+Biggest Obstacle: ${(user as any).extraContext?.biggestObstacle || 'Not specified'}
+
+=== TASKS TO PRIORITIZE ===
+${taskTitles.map((t, i) => `${i + 1}. ${t}`).join('\n')}
+
+=== YOUR TASK ===
+Prioritize these tasks based on the user's goals and work style. Add descriptions and time estimates.
+
+STRICT INSTRUCTION: Return ONLY raw valid JSON array:
+[
+  {
+    "title": "exact task title",
+    "description": "brief description of what to do",
+    "priority": "high|medium|low",
+    "estimatedMinutes": 45,
+    "whyImportant": "one sentence on why this matters for their goals"
+  }
+]
+
+Order from most to least important. Be realistic with time estimates.`;
+};
+
+// ─── Replan Prompt ────────────────────────────────────────────────────────────
+
+export const buildReplanPrompt = (
+  user: IUser,
+  remainingTasks: { title: string; priority: string; estimatedMinutes: number }[]
+): string => {
+  const totalMins = remainingTasks.reduce((s, t) => s + t.estimatedMinutes, 0);
+  const hoursLeft = Math.max(2, 8 - new Date().getHours());
+
+  return `You are the Digital Twin of ${user.name}. Replan their remaining day.
+
+=== SITUATION ===
+Time remaining today: ~${hoursLeft} hours
+Remaining tasks: ${remainingTasks.length}
+Total estimated time: ${totalMins} minutes
+User's productivity score: ${user.productivityScore}/100
+
+=== REMAINING TASKS ===
+${remainingTasks.map((t, i) => `${i + 1}. ${t.title} (${t.estimatedMinutes} mins, ${t.priority} priority)`).join('\n')}
+
+=== YOUR TASK ===
+Reorder and re-prioritize these tasks to fit the remaining time. Be realistic.
+If there's not enough time, mark lower priority tasks as lower.
+
+STRICT INSTRUCTION: Return ONLY raw valid JSON array:
+[
+  {
+    "title": "exact task title",
+    "priority": "high|medium|low",
+    "estimatedMinutes": 30,
+    "message": "optional one-line note for the first task only"
+  }
+]`;
+};
