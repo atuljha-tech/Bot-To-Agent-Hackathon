@@ -159,7 +159,7 @@ function showLevel1(domain) {
   const dismiss = () => { el.style.animation = `you2-out .3s ease forwards`; setTimeout(() => el.remove(), 300); };
   document.getElementById(`${YOU2}-close`).onclick = dismiss;
   document.getElementById(`${YOU2}-stay`).onclick = dismiss;
-  document.getElementById(`${YOU2}-focus`).onclick = () => { dismiss(); window.open('http://localhost:3000/missions', '_blank'); };
+  document.getElementById(`${YOU2}-focus`).onclick = () => { dismiss(); window.open('http://localhost:3000/tasks', '_blank'); };
   setTimeout(dismiss, 15000);
 }
 
@@ -207,7 +207,7 @@ function showLevel2(domain) {
   const dismiss = () => { el.style.animation = `you2-out .3s ease forwards`; setTimeout(() => el.remove(), 300); };
   document.getElementById(`${YOU2}-close`).onclick = dismiss;
   document.getElementById(`${YOU2}-stay`).onclick = dismiss;
-  document.getElementById(`${YOU2}-focus`).onclick = () => { dismiss(); window.open('http://localhost:3000/missions', '_blank'); };
+  document.getElementById(`${YOU2}-focus`).onclick = () => { dismiss(); window.open('http://localhost:3000/tasks', '_blank'); };
   document.getElementById(`${YOU2}-leetcode`).onclick = () => { dismiss(); window.open('https://leetcode.com/problemset/', '_blank'); };
   document.getElementById(`${YOU2}-dashboard`).onclick = () => { dismiss(); window.open('http://localhost:3000/dashboard', '_blank'); };
   setTimeout(dismiss, 25000);
@@ -274,7 +274,7 @@ function showLevel3(domain) {
 
   const dismiss = () => { clearInterval(countdownInterval); el.style.animation = `you2-out .3s ease forwards`; setTimeout(() => el.remove(), 300); };
   document.getElementById(`${YOU2}-override`).onclick = dismiss;
-  document.getElementById(`${YOU2}-focus`).onclick = () => { dismiss(); window.open('http://localhost:3000/missions', '_blank'); };
+  document.getElementById(`${YOU2}-focus`).onclick = () => { dismiss(); window.open('http://localhost:3000/tasks', '_blank'); };
   document.getElementById(`${YOU2}-close-tab`).onclick = () => { dismiss(); window.close(); };
 }
 

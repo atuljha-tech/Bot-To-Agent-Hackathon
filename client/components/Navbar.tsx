@@ -6,7 +6,6 @@ import { useTheme } from './ThemeProvider';
 
 const navLinks = [
   { href: '/dashboard', label: 'Overview' },
-  { href: '/missions', label: 'Missions' },
   { href: '/reflection', label: 'Reflection' },
   { href: '/tasks', label: 'Action Plan' },
   { href: '/simulate', label: 'Simulation' },
