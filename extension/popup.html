@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>You²</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 340px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #0b0e14;
+      color: #f8fafc;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(6,182,212,0.08));
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .logo-row { display: flex; align-items: center; gap: 10px; }
+    .logo {
+      width: 32px; height: 32px; border-radius: 10px;
+      background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 900; color: white;
+      box-shadow: 0 4px 12px rgba(139,92,246,0.4);
+    }
+    .header h1 { font-size: 15px; font-weight: 800; letter-spacing: -0.02em; }
+    .header h1 span { color: #8b5cf6; }
+    .version-badge {
+      font-size: 9px; font-weight: 700; padding: 3px 7px;
+      background: rgba(139,92,246,0.15); color: #a78bfa;
+      border: 1px solid rgba(139,92,246,0.25); border-radius: 20px;
+    }
+
+    /* ── Sections ── */
+    .section { padding: 16px 18px; }
+    .section + .section { border-top: 1px solid rgba(255,255,255,0.05); }
+
+    /* ── Labels ── */
+    .label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+      margin-bottom: 10px;
+    }
+
+    /* ── Site Classification Card ── */
+    .site-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    .site-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .site-name {
+      font-size: 13px; font-weight: 700; color: #f8fafc;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      max-width: 180px;
+    }
+    .category-badge {
+      font-size: 10px; font-weight: 800; padding: 4px 10px;
+      border-radius: 20px; letter-spacing: 0.03em; flex-shrink: 0;
+    }
+    .cat-productive  { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.25); }
+    .cat-distracting { background: rgba(239,68,68,0.15);  color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
+    .cat-neutral     { background: rgba(148,163,184,0.12); color: #94a3b8; border: 1px solid rgba(148,163,184,0.2); }
+    .cat-sensitive   { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.25); }
+    .cat-unknown     { background: rgba(148,163,184,0.1); color: #64748b; border: 1px solid rgba(148,163,184,0.15); }
+
+    /* Score bars */
+    .score-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .score-row:last-child { margin-bottom: 0; }
+    .score-label { font-size: 10px; color: rgba(255,255,255,0.4); width: 68px; flex-shrink: 0; }
+    .score-track {
+      flex: 1; height: 5px; background: rgba(255,255,255,0.07);
+      border-radius: 4px; overflow: hidden;
+    }
+    .score-fill { height: 100%; border-radius: 4px; transition: width 0.8s ease; }
+    .fill-green  { background: linear-gradient(90deg, #10b981, #34d399); }
+    .fill-red    { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+    .fill-gray   { background: linear-gradient(90deg, #475569, #94a3b8); }
+    .score-num { font-size: 10px; font-weight: 700; width: 28px; text-align: right; color: rgba(255,255,255,0.5); }
+
+    /* ── Metrics ── */
+    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+    .metric-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 12px; text-align: center;
+    }
+    .metric-card .val { font-size: 20px; font-weight: 900; margin-bottom: 2px; }
+    .metric-card .lbl { font-size: 10px; color: rgba(255,255,255,0.35); font-weight: 600; }
+
+    /* ── Status row ── */
+    .status-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px; font-size: 12px; margin-bottom: 8px;
+    }
+    .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+    .dot-green { background: #10b981; box-shadow: 0 0 6px #10b981; animation: pulse-dot 2s infinite; }
+    .dot-gray  { background: #475569; }
+    @keyframes pulse-dot { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+    /* ── Inputs ── */
+    input {
+      width: 100%; padding: 11px 14px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; color: #f8fafc; font-size: 13px; outline: none;
+      transition: all 0.2s;
+    }
+    input:focus { border-color: #8b5cf6; box-shadow: 0 0 0 3px rgba(139,92,246,0.15); }
+    input::placeholder { color: rgba(255,255,255,0.25); }
+
+    /* ── Buttons ── */
+    button {
+      width: 100%; padding: 11px; border: none; border-radius: 10px;
+      font-size: 12px; font-weight: 700; cursor: pointer;
+      transition: transform 0.1s, opacity 0.15s; margin-top: 8px;
+      font-family: inherit;
+    }
+    button:hover:not(:disabled) { transform: translateY(-1px); opacity: 0.9; }
+    button:active:not(:disabled) { transform: translateY(0); }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #8b5cf6, #6366f1);
+      color: white; box-shadow: 0 4px 14px rgba(139,92,246,0.35);
+    }
+    .btn-green {
+      background: linear-gradient(135deg, #10b981, #06b6d4);
+      color: white; box-shadow: 0 4px 14px rgba(16,185,129,0.3);
+    }
+    .btn-ghost {
+      background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .btn-danger {
+      background: rgba(239,68,68,0.1); color: #f87171;
+      border: 1px solid rgba(239,68,68,0.2);
+    }
+    .btn-row { display: flex; gap: 8px; }
+    .btn-row button { flex: 1; }
+
+    /* ── Misc ── */
+    .hidden { display: none !important; }
+    .spinner {
+      display: inline-block; width: 12px; height: 12px;
+      border: 2px solid rgba(255,255,255,0.3); border-radius: 50%;
+      border-top-color: white; animation: spin 0.7s linear infinite;
+      vertical-align: middle; margin-right: 6px;
+    }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    .footer {
+      padding: 10px 18px; text-align: center;
+      font-size: 10px; color: rgba(255,255,255,0.2);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* ── Setup hint ── */
+    .hint {
+      font-size: 11px; color: rgba(255,255,255,0.35);
+      text-align: center; margin-top: 10px; line-height: 1.5;
+    }
+    .hint a { color: #8b5cf6; text-decoration: none; font-weight: 600; }
+    .hint a:hover { text-decoration: underline; }
+
+    /* ── Sensitive warning ── */
+    .sensitive-banner {
+      background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25);
+      border-radius: 12px; padding: 12px 14px;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .sensitive-banner .icon { font-size: 18px; flex-shrink: 0; }
+    .sensitive-banner p { font-size: 12px; color: #fbbf24; line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <div class="header">
+    <div class="logo-row">
+      <div class="logo">Y²</div>
+      <h1>You<span>²</span></h1>
+    </div>
+    <span class="version-badge">v2.0</span>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SETUP SECTION (not connected)
+  ══════════════════════════════════════════════════════════ -->
+  <div id="setup-section" class="section hidden">
+    <div class="label" style="text-align:center;margin-bottom:16px;">Link Your Twin</div>
+    <input type="text" id="userIdInput" placeholder="Paste your You² User ID" autocomplete="off" />
+    <button class="btn-green" id="connectBtn" style="margin-top:12px;">Connect Account</button>
+    <p class="hint">
+      Find your ID on the
+      <a href="http://localhost:3000/dashboard" target="_blank">Dashboard</a>
+      — copy from the header
+    </p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       CONNECTED SECTION
+  ══════════════════════════════════════════════════════════ -->
+  <div id="connected-section" class="hidden">
+
+    <!-- Live page classification -->
+    <div class="section" style="padding-bottom:12px;">
+      <div class="label">Current Page</div>
+
+      <!-- Sensitive override -->
+      <div id="sensitive-warning" class="sensitive-banner hidden" style="margin-bottom:12px;">
+        <span class="icon">🔒</span>
+        <p>Sensitive page detected. You² has paused all tracking to protect your privacy.</p>
+      </div>
+
+      <div id="site-card" class="site-card">
+        <div class="site-row">
+          <span class="site-name" id="siteNameEl">Loading…</span>
+          <span class="category-badge cat-unknown" id="categoryBadge">—</span>
+        </div>
+        <!-- Score bars -->
+        <div class="score-row">
+          <span class="score-label">Productive</span>
+          <div class="score-track"><div class="score-fill fill-green" id="prodBar" style="width:0%"></div></div>
+          <span class="score-num" id="prodNum">0%</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">Distracting</span>
+          <div class="score-track"><div class="score-fill fill-red" id="distBar" style="width:0%"></div></div>
+          <span class="score-num" id="distNum">0%</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">Neutral</span>
+          <div class="score-track"><div class="score-fill fill-gray" id="neutBar" style="width:0%"></div></div>
+          <span class="score-num" id="neutNum">0%</span>
+        </div>
+      </div>
+
+      <!-- Session timer -->
+      <div class="status-row">
+        <span><span class="dot dot-green"></span>Tracking active</span>
+        <span id="sessionTimer" style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;">0s</span>
+      </div>
+    </div>
+
+    <!-- User metrics -->
+    <div class="section" style="padding-top:12px;padding-bottom:12px;">
+      <div class="label">Twin Stats</div>
+
+      <div id="loading-state" style="text-align:center;padding:16px 0;font-size:12px;color:rgba(255,255,255,0.35);">
+        <span class="spinner"></span>Fetching live data…
+      </div>
+
+      <div id="user-metrics" class="hidden">
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="val" id="scoreEl" style="color:#10b981;">—</div>
+            <div class="lbl">Productivity Score</div>
+          </div>
+          <div class="metric-card">
+            <div class="val" id="goalsEl" style="color:#8b5cf6;">—</div>
+            <div class="lbl">Active Goals</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="section" style="padding-top:12px;">
+      <button class="btn-primary" id="openChatBtn">💬 Chat with Twin</button>
+      <div class="btn-row">
+        <button class="btn-ghost" id="openDashboardBtn">📊 Dashboard</button>
+        <button class="btn-ghost" id="openInsightsBtn">📈 Insights</button>
+      </div>
+      <button class="btn-danger" id="disconnectBtn" style="margin-top:6px;">Disconnect</button>
+    </div>
+
+  </div>
+
+  <div class="footer">You² Digital Twin · Privacy Preserved · v2.0</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
