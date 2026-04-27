@@ -82,20 +82,30 @@ function resolveUrl(title: string, description: string): string {
     if (text.includes(key)) return URL_MAP[key];
   }
 
-  // Fallback heuristics
-  if (text.includes('dsa') || text.includes('data structure') || text.includes('algorithm')) {
+  // Broad keyword heuristics — order matters (most specific first)
+  if (text.match(/youtube|yt\s|watch.*video|video.*playlist/)) {
+    // Detect topic for smarter YouTube search
+    if (text.match(/dsa|data structure|algorithm|array|tree|graph|dp|dynamic/)) {
+      return 'https://www.youtube.com/results?search_query=DSA+data+structures+algorithms+tutorial';
+    }
+    if (text.match(/leetcode|problem/)) {
+      return 'https://www.youtube.com/results?search_query=LeetCode+problem+patterns+tutorial';
+    }
+    if (text.match(/system design/)) {
+      return 'https://www.youtube.com/results?search_query=system+design+interview+tutorial';
+    }
+    return 'https://www.youtube.com';
+  }
+  if (text.match(/dsa|data structure|algorithm/)) {
     return 'https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/';
   }
-  if (text.includes('portfolio') || text.includes('project')) return 'https://github.com';
-  if (text.includes('apply') || text.includes('intern') || text.includes('job')) {
-    return 'https://www.linkedin.com/jobs/';
-  }
-  if (text.includes('read') || text.includes('article') || text.includes('blog')) {
-    return 'https://dev.to';
-  }
-  if (text.includes('revise') || text.includes('notes') || text.includes('study')) {
-    return 'https://www.notion.so';
-  }
+  if (text.match(/portfolio|project.*build|build.*project/)) return 'https://github.com';
+  if (text.match(/apply|intern|job search/)) return 'https://www.linkedin.com/jobs/';
+  if (text.match(/linkedin/)) return 'https://www.linkedin.com';
+  if (text.match(/read|article|blog/)) return 'https://dev.to';
+  if (text.match(/revise|notes|study/)) return 'https://www.notion.so';
+  if (text.match(/mock|interview/)) return 'https://www.pramp.com';
+  if (text.match(/aptitude/)) return 'https://www.indiabix.com';
 
   return 'http://localhost:3000/dashboard';
 }
@@ -227,12 +237,22 @@ export const updateTask = async (req: Request, res: Response): Promise<void> => 
     const { taskId } = req.params;
     const updates = req.body;
 
-    // Handle status transitions
-    if (updates.status === 'active' && !updates.startedAt) updates.startedAt = new Date();
-    if (updates.status === 'completed' || updates.completed === true) {
+    // Handle status transitions — be explicit, never auto-complete on 'active'
+    if (updates.status === 'active') {
+      if (!updates.startedAt) updates.startedAt = new Date();
+      // Ensure completed flags are NOT set when activating
+      updates.completed = false;
+      delete updates.completedAt;
+    }
+    if (updates.status === 'completed') {
       updates.completed = true;
-      updates.status = 'completed';
       updates.completedAt = new Date();
+      updates.progressPercent = 100;
+    }
+    // Legacy: if only completed:true is sent (from old tasks page)
+    if (updates.completed === true && updates.status !== 'active') {
+      updates.status = 'completed';
+      updates.completedAt = updates.completedAt || new Date();
       updates.progressPercent = 100;
     }
 

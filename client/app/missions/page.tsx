@@ -302,16 +302,23 @@ export default function MissionsPage() {
 
   const handleStart = async (task: Task) => {
     if (!userId) return;
-    // Mark any currently active task as pending first
+
+    // Deactivate any currently active task first
     const currentActive = tasks.find(t => t.status === 'active');
-    if (currentActive) {
+    if (currentActive && currentActive._id !== task._id) {
       await taskAPI.update(currentActive._id, { status: 'pending' });
     }
+
+    // Mark this task as active
     await taskAPI.update(task._id, { status: 'active', startedAt: new Date().toISOString() });
-    // Open the launch URL
-    if (task.launchUrl && task.launchUrl !== 'http://localhost:3000/dashboard') {
-      window.open(task.launchUrl, '_blank');
+
+    // Open the launch URL in a new tab
+    const url = task.launchUrl;
+    if (url && url !== 'http://localhost:3000/dashboard' && url !== '') {
+      window.open(url, '_blank', 'noopener,noreferrer');
     }
+
+    // Reload tasks to reflect new state
     await loadTasks(userId);
   };
 
